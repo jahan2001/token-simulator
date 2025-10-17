@@ -1,0 +1,36 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+    background: #f4f4f4;
+    padding: 20px;
+}
+.container {
+    max-width: 500px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.counter {
+    font-size: 2.5em;
+    margin: 20px 0;
+    color: #2c3e50;
+}
+.upgrade {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+.upgrade:hover {
+    background: #2980b9;
+}
+.upgrade:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+}

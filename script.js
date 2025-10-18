@@ -1,3 +1,11 @@
+// ======== سیستم دستاوردها ========
+const achievements = {
+    firstClick: { name: "شروع کننده", description: "اولین کلیک توکن", earned: false },
+    firstUpgrade: { name: "سرمایه گذار", description: "اولین آپگرید را بخر", earned: false },
+    thousandaire: { name: "ثروتمند", description: "به 1000 توکن برس", earned: false },
+    tycoon: { name: "تایکون", description: "به 10000 توکن برس", earned: false },
+    proMiner: { name: "ماینر حرفه ای", description: "10+ توکن در ثانیه داشته باش", earned: false }
+};
 let tokens = 0;
 let tokensPerSecond = 0;
 

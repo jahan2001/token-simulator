@@ -1,5 +1,6 @@
+
 body {
-    font-family: 'Vazirmatn', sans-serif;
+    font-family: Tahoma, Arial, sans-serif;
     text-align: center;
     background: #f4f4f4;
     padding: 20px;
@@ -14,23 +15,24 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 .counter {
-    font-size: 2.5em;
+    font-size: 2em;
     margin: 20px 0;
     color: #2c3e50;
     font-weight: bold;
 }
 .upgrade {
-    font-family: 'Vazirmatn', sans-serif;
+    font-family: Tahoma, Arial, sans-serif;
     background: #3498db;
     color: white;
     border: none;
-    padding: 12px 18px;
+    padding: 12px;
     margin: 8px;
     border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s;
     width: 90%;
-    font-size: 1em;
+    font-size: 16px;
+    line-height: 1.4;
 }
 .upgrade:hover {
     background: #2980b9;
@@ -40,6 +42,6 @@ body {
     cursor: not-allowed;
 }
 small {
-    font-size: 0.8em;
+    font-size: 14px;
     opacity: 0.9;
 }

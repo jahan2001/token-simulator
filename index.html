@@ -1,32 +1,22 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>شبیه‌ساز آموزشی اقتصاد توکن</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>شبیه‌ساز آموزشی اقتصاد توکن</h1>
-        <p>این یک ابزار آموزشی است. هیچ پول واقعی در کار نیست.</p>
-        
-        <div class="counter">توکن‌های شما: <span id="tokens">0</span></div>
-        
-        <div>
-            <button class="upgrade" onclick="buyUpgrade(1, 10)">
-                خرید ماینر سطح ۱ (+۱ توکن/ثانیه)<br>
-                <small>هزینه: ۱۰ توکن</small>
-            </button>
-            <button class="upgrade" onclick="buyUpgrade(5, 100)">
-                خرید ماینر سطح ۲ (+۵ توکن/ثانیه)<br>
-                <small>هزینه: ۱۰۰ توکن</small>
-            </button>
-            <button class="upgrade" onclick="buyUpgrade(10, 500)">
-                خرید کارخانه ماینینگ (+۱۰ توکن/ثانیه)<br>
-                <small>هزینه: ۵۰۰ توکن</small>
-            </button>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+<div>
+    <button class="upgrade" onclick="buyUpgrade(1, 10)">
+        خرید ماینر سطح ۱ (+۱ توکن/ثانیه)<br>
+        <small>هزینه: ۱۰ توکن</small>
+    </button>
+    <button class="upgrade" onclick="buyUpgrade(5, 100)">
+        خرید ماینر سطح ۲ (+۵ توکن/ثانیه)<br>
+        <small>هزینه: ۱۰۰ توکن</small>
+    </button>
+    <button class="upgrade" onclick="buyUpgrade(10, 500)">
+        خرید کارخانه ماینینگ (+۱۰ توکن/ثانیه)<br>
+        <small>هزینه: ۵۰۰ توکن</small>
+    </button>
+    
+    <br>
+    <button class="upgrade" onclick="resetGame()" style="background: #e74c3c;">
+        ریست کردن بازی 🔄
+    </button>
+    <button class="upgrade" onclick="saveGame()" style="background: #27ae60;">
+        ذخیره دستی 💾
+    </button>
+</div>

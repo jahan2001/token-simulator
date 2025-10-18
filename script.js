@@ -104,7 +104,32 @@ document.getElementById('tokens').addEventListener('click', function() {
 
 // بارگذاری خودکار هنگام شروع بازی
 window.addEventListener('load', function() {
-    loadGame();
+    loadGame();function loadGame() {
+    const saved = localStorage.getItem('tokenSimulatorSave');
+    if (saved) {
+        const gameState = JSON.parse(saved);
+        tokens = gameState.tokens || 0;
+        tokensPerSecond = gameState.tokensPerSecond || 0;
+        
+        // بارگذاری دستاوردها
+        if (gameState.achievements) {
+            for (const key in gameState.achievements) {
+                if (achievements[key]) {
+                    achievements[key].earned = gameState.achievements[key].earned;
+                }
+            }
+        }
+        
+        // محاسبه توکن‌های از دست رفته
+        if (gameState.lastSaveTime) {
+            const timePassed = Date.now() - gameState.lastSaveTime;
+            const tokensMissed = (timePassed / 1000) * tokensPerSecond;
+            tokens += tokensMissed;
+        }
+        
+        updateDisplay();
+    }
+}
     
     // ذخیره‌سازی خودکار هر ۳۰ ثانیه
     setInterval(saveGame, 30000);

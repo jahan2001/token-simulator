@@ -93,3 +93,42 @@ window.addEventListener('load', function() {
     // ذخیره‌سازی خودکار هر ۳۰ ثانیه
     setInterval(saveGame, 30000);
 });
+// تابع بررسی دستاوردها
+function checkAchievements() {
+    // دستاورد اولین کلیک
+    if (tokens >= 1 && !achievements.firstClick.earned) {
+        unlockAchievement('firstClick');
+    }
+    
+    // دستاورد اولین آپگرید
+    if (tokensPerSecond > 0 && !achievements.firstUpgrade.earned) {
+        unlockAchievement('firstUpgrade');
+    }
+    
+    // دستاورد ثروتمند
+    if (tokens >= 1000 && !achievements.thousandaire.earned) {
+        unlockAchievement('thousandaire');
+    }
+    
+    // دستاورد تایکون
+    if (tokens >= 10000 && !achievements.tycoon.earned) {
+        unlockAchievement('tycoon');
+    }
+    
+    // دستاورد ماینر حرفه‌ای
+    if (tokensPerSecond >= 10 && !achievements.proMiner.earned) {
+        unlockAchievement('proMiner');
+    }
+}
+
+// تابع باز کردن قفل دستاورد
+function unlockAchievement(achievementKey) {
+    achievements[achievementKey].earned = true;
+    showAchievementNotification(achievements[achievementKey].name);
+    saveGame(); // ذخیره دستاورد جدید
+}
+
+// تابع نمایش اعلان دستاورد
+function showAchievementNotification(achievementName) {
+    alert(`🎉 دستاورد باز شد: ${achievementName}!`);
+}

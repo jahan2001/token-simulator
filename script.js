@@ -1,13 +1,14 @@
-// ======== سیستم دستاوردها ========
-const achievements = {
-    firstClick: { name: "شروع کننده", description: "اولین کلیک توکن", earned: false },
-    firstUpgrade: { name: "سرمایه گذار", description: "اولین آپگرید را بخر", earned: false },
-    thousandaire: { name: "ثروتمند", description: "به 1000 توکن برس", earned: false },
-    tycoon: { name: "تایکون", description: "به 10000 توکن برس", earned: false },
-    proMiner: { name: "ماینر حرفه ای", description: "10+ توکن در ثانیه داشته باش", earned: false }
-};
 let tokens = 0;
 let tokensPerSecond = 0;
+
+// ======== سیستم دستاوردها ========
+const achievements = {
+    firstClick: { name: "First Click", description: "Make your first click", earned: false },
+    firstUpgrade: { name: "First Investor", description: "Buy your first upgrade", earned: false },
+    thousandaire: { name: "Thousandaire", description: "Reach 1,000 tokens", earned: false },
+    tycoon: { name: "Tycoon", description: "Reach 10,000 tokens", earned: false },
+    proMiner: { name: "Pro Miner", description: "Reach 10+ tokens per second", earned: false }
+};
 
 // ======== ذخیره‌سازی و بازیابی پیشرفت ========
 
@@ -16,6 +17,7 @@ function saveGame() {
     const gameState = {
         tokens: tokens,
         tokensPerSecond: tokensPerSecond,
+        achievements: achievements,
         lastSaveTime: Date.now()
     };
     localStorage.setItem('tokenSimulatorSave', JSON.stringify(gameState));
@@ -23,88 +25,6 @@ function saveGame() {
 
 // تابع برای بارگذاری وضعیت بازی
 function loadGame() {
-    const saved = localStorage.getItem('tokenSimulatorSave');
-    if (saved) {
-        const gameState = JSON.parse(saved);
-        tokens = gameState.tokens || 0;
-        tokensPerSecond = gameState.tokensPerSecond || 0;
-        
-        // محاسبه توکن‌های از دست رفته در زمان عدم فعالیت
-        if (gameState.lastSaveTime) {
-            const timePassed = Date.now() - gameState.lastSaveTime;
-            const tokensMissed = (timePassed / 1000) * tokensPerSecond;
-            tokens += tokensMissed;
-        }
-        
-        updateDisplay();
-        alert('پیشرفت شما بازیابی شد! 🎮');
-    }function updateDisplay() {
-    document.getElementById('tokens').innerText = Math.floor(tokens);
-    // ذخیره خودکار هر ۱۰ ثانیه
-    if (Math.floor(tokens) % 10 === 0) {
-        saveGame();function saveGame() {
-    const gameState = {
-        tokens: tokens,
-        tokensPerSecond: tokensPerSecond,
-        achievements: achievements,
-        lastSaveTime: Date.now()
-    };
-    localStorage.setItem('tokenSimulatorSave', JSON.stringify(gameState));
-}
-    }
-    // بررسی دستاوردها در هر بروزرسانی
-    checkAchievements();
-}
-}
-
-// تابع پاک کردن ذخیره‌سازی (برای تست)
-function resetGame() {
-    if (confirm('آیا مطمئنید می‌خواهید بازی را ریست کنید؟')) {
-        localStorage.removeItem('tokenSimulatorSave');
-        tokens = 0;
-        tokensPerSecond = 0;
-        updateDisplay();
-        alert('بازی ریست شد!');
-    }
-}
-
-// تابع برای خرید آپگرید
-function buyUpgrade(addTokensPerSecond, cost) {
-    if(tokens >= cost) {
-        tokens -= cost;
-        tokensPerSecond += addTokensPerSecond;
-        updateDisplay();
-        saveGame(); // ذخیره پس از هر خرید
-        alert(`آپگرید با موفقیت خریداری شد! +${addTokensPerSecond} توکن در ثانیه`);
-    } else {
-        alert('توکن کافی ندارید!');
-    }
-}
-
-// تابع برای بروزرسانی صفحه
-function updateDisplay() {
-    document.getElementById('tokens').innerText = Math.floor(tokens);
-    // ذخیره خودکار هر ۱۰ ثانیه
-    if (Math.floor(tokens) % 10 === 0) {
-        saveGame();
-    }
-}
-
-// حلقه اصلی - توکن را خودکار اضافه می‌کند
-setInterval(function() {
-    tokens += tokensPerSecond;
-    updateDisplay();
-}, 1000);
-
-// اضافه کردن توکن با کلیک (برای شروع)
-document.getElementById('tokens').addEventListener('click', function() {
-    tokens += 1;
-    updateDisplay();
-});
-
-// بارگذاری خودکار هنگام شروع بازی
-window.addEventListener('load', function() {
-    loadGame();function loadGame() {
     const saved = localStorage.getItem('tokenSimulatorSave');
     if (saved) {
         const gameState = JSON.parse(saved);
@@ -120,7 +40,7 @@ window.addEventListener('load', function() {
             }
         }
         
-        // محاسبه توکن‌های از دست رفته
+        // محاسبه توکن‌های از دست رفته در زمان عدم فعالیت
         if (gameState.lastSaveTime) {
             const timePassed = Date.now() - gameState.lastSaveTime;
             const tokensMissed = (timePassed / 1000) * tokensPerSecond;
@@ -130,10 +50,51 @@ window.addEventListener('load', function() {
         updateDisplay();
     }
 }
-    
-    // ذخیره‌سازی خودکار هر ۳۰ ثانیه
-    setInterval(saveGame, 30000);
-});
+
+// تابع پاک کردن ذخیره‌سازی (برای تست)
+function resetGame() {
+    if (confirm('Are you sure you want to reset the game?')) {
+        localStorage.removeItem('tokenSimulatorSave');
+        tokens = 0;
+        tokensPerSecond = 0;
+        
+        // ریست کردن دستاوردها
+        for (const key in achievements) {
+            achievements[key].earned = false;
+        }
+        
+        updateDisplay();
+        alert('Game reset!');
+    }
+}
+
+// تابع برای خرید آپگرید
+function buyUpgrade(addTokensPerSecond, cost) {
+    if(tokens >= cost) {
+        tokens -= cost;
+        tokensPerSecond += addTokensPerSecond;
+        updateDisplay();
+        saveGame(); // ذخیره پس از هر خرید
+        checkAchievements(); // بررسی دستاوردها
+        alert(`Upgrade purchased! +${addTokensPerSecond} tokens/sec`);
+    } else {
+        alert('Not enough tokens!');
+    }
+}
+
+// تابع برای بروزرسانی صفحه
+function updateDisplay() {
+    document.getElementById('tokens').innerText = Math.floor(tokens);
+    // ذخیره خودکار هر ۱۰ ثانیه
+    if (Math.floor(tokens) % 10 === 0) {
+        saveGame();
+    }
+    // بررسی دستاوردها در هر بروزرسانی
+    checkAchievements();
+}
+
+// ======== سیستم دستاوردها ========
+
 // تابع بررسی دستاوردها
 function checkAchievements() {
     // دستاورد اولین کلیک
@@ -171,11 +132,12 @@ function unlockAchievement(achievementKey) {
 
 // تابع نمایش اعلان دستاورد
 function showAchievementNotification(achievementName) {
-    alert(`🎉 دستاورد باز شد: ${achievementName}!`);
+    alert(`🎉 Achievement Unlocked: ${achievementName}!`);
 }
+
 // تابع نمایش لیست دستاوردها
 function showAchievements() {
-    let achievementsList = "دستاوردهای شما:\n\n";
+    let achievementsList = "Your Achievements:\n\n";
     let earnedCount = 0;
     
     for (const key in achievements) {
@@ -188,6 +150,26 @@ function showAchievements() {
         }
     }
     
-    achievementsList += `\nدر مجموع: ${earnedCount} از ${Object.keys(achievements).length} دستاورد`;
+    achievementsList += `\nTotal: ${earnedCount} of ${Object.keys(achievements).length} achievements`;
     alert(achievementsList);
 }
+
+// حلقه اصلی - توکن را خودکار اضافه می‌کند
+setInterval(function() {
+    tokens += tokensPerSecond;
+    updateDisplay();
+}, 1000);
+
+// اضافه کردن توکن با کلیک (برای شروع)
+document.getElementById('tokens').addEventListener('click', function() {
+    tokens += 1;
+    updateDisplay();
+});
+
+// بارگذاری خودکار هنگام شروع بازی
+window.addEventListener('load', function() {
+    loadGame();
+    
+    // ذخیره‌سازی خودکار هر ۳۰ ثانیه
+    setInterval(saveGame, 30000);
+});

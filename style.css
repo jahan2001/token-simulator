@@ -1,8 +1,9 @@
 body {
-    font-family: sans-serif;
+    font-family: 'Vazirmatn', sans-serif;
     text-align: center;
     background: #f4f4f4;
     padding: 20px;
+    line-height: 1.6;
 }
 .container {
     max-width: 500px;
@@ -16,16 +17,20 @@ body {
     font-size: 2.5em;
     margin: 20px 0;
     color: #2c3e50;
+    font-weight: bold;
 }
 .upgrade {
+    font-family: 'Vazirmatn', sans-serif;
     background: #3498db;
     color: white;
     border: none;
-    padding: 10px 15px;
-    margin: 5px;
-    border-radius: 5px;
+    padding: 12px 18px;
+    margin: 8px;
+    border-radius: 8px;
     cursor: pointer;
     transition: background 0.3s;
+    width: 90%;
+    font-size: 1em;
 }
 .upgrade:hover {
     background: #2980b9;
@@ -33,4 +38,8 @@ body {
 .upgrade:disabled {
     background: #95a5a6;
     cursor: not-allowed;
+}
+small {
+    font-size: 0.8em;
+    opacity: 0.9;
 }

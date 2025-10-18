@@ -173,3 +173,21 @@ function unlockAchievement(achievementKey) {
 function showAchievementNotification(achievementName) {
     alert(`🎉 دستاورد باز شد: ${achievementName}!`);
 }
+// تابع نمایش لیست دستاوردها
+function showAchievements() {
+    let achievementsList = "دستاوردهای شما:\n\n";
+    let earnedCount = 0;
+    
+    for (const key in achievements) {
+        const achievement = achievements[key];
+        if (achievement.earned) {
+            achievementsList += `✅ ${achievement.name}\n   ${achievement.description}\n\n`;
+            earnedCount++;
+        } else {
+            achievementsList += `❌ ${achievement.name}\n   ${achievement.description}\n\n`;
+        }
+    }
+    
+    achievementsList += `\nدر مجموع: ${earnedCount} از ${Object.keys(achievements).length} دستاورد`;
+    alert(achievementsList);
+}

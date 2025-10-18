@@ -38,7 +38,15 @@ function loadGame() {
         
         updateDisplay();
         alert('پیشرفت شما بازیابی شد! 🎮');
+    }function updateDisplay() {
+    document.getElementById('tokens').innerText = Math.floor(tokens);
+    // ذخیره خودکار هر ۱۰ ثانیه
+    if (Math.floor(tokens) % 10 === 0) {
+        saveGame();
     }
+    // بررسی دستاوردها در هر بروزرسانی
+    checkAchievements();
+}
 }
 
 // تابع پاک کردن ذخیره‌سازی (برای تست)

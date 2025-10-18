@@ -42,7 +42,15 @@ function loadGame() {
     document.getElementById('tokens').innerText = Math.floor(tokens);
     // ذخیره خودکار هر ۱۰ ثانیه
     if (Math.floor(tokens) % 10 === 0) {
-        saveGame();
+        saveGame();function saveGame() {
+    const gameState = {
+        tokens: tokens,
+        tokensPerSecond: tokensPerSecond,
+        achievements: achievements,
+        lastSaveTime: Date.now()
+    };
+    localStorage.setItem('tokenSimulatorSave', JSON.stringify(gameState));
+}
     }
     // بررسی دستاوردها در هر بروزرسانی
     checkAchievements();

@@ -1,40 +1,39 @@
-
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شبیه ساز آموزشی اقتصاد توکن</title>
+    <title>Token Simulator</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>شبیه ساز آموزشی اقتصاد توکن</h1>
-        <p>این یک ابزار آموزشی است. هیچ پول واقعی در کار نیست.</p>
+        <h1>Token Simulator</h1>
+        <p>Educational Purpose - No Real Money</p>
         
-        <div class="counter">توکن های شما: <span id="tokens">0</span></div>
+        <div class="counter">Tokens: <span id="tokens">0</span></div>
         
-        <div>
+        <div class="buttons">
             <button class="upgrade" onclick="buyUpgrade(1, 10)">
-                خرید ماینر سطح 1 (+1 توکن/ثانیه)<br>
-                <small>هزینه: 10 توکن</small>
+                Upgrade 1 (+1 token/sec)<br>
+                <small>Cost: 10 tokens</small>
             </button>
             <button class="upgrade" onclick="buyUpgrade(5, 100)">
-                خرید ماینر سطح 2 (+5 توکن/ثانیه)<br>
-                <small>هزینه: 100 توکن</small>
+                Upgrade 2 (+5 tokens/sec)<br>
+                <small>Cost: 100 tokens</small>
             </button>
             <button class="upgrade" onclick="buyUpgrade(10, 500)">
-                خرید کارخانه ماینینگ (+10 توکن/ثانیه)<br>
-                <small>هزینه: 500 توکن</small>
+                Factory (+10 tokens/sec)<br>
+                <small>Cost: 500 tokens</small>
             </button>
             
-            <br>
-            <button class="upgrade" onclick="resetGame()" style="background: #e74c3c;">
-                ریست کردن بازی
-            </button>
-            <button class="upgrade" onclick="saveGame()" style="background: #27ae60;">
-                ذخیره دستی
-            </button>
+            <div class="action-buttons">
+                <button class="action-btn reset" onclick="resetGame()">
+                    Reset Game
+                </button>
+                <button class="action-btn save" onclick="saveGame()">
+                    Save Game
+                </button>
+            </div>
         </div>
     </div>
     <script src="script.js"></script>

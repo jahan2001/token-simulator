@@ -1,50 +1,39 @@
+
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>شبیه‌ساز آموزشی اقتصاد توکن</title>
+    <title>شبیه ساز آموزشی اقتصاد توکن</title>
     <link rel="stylesheet" href="style.css">
-    
-    <!-- اضافه کردن فونت فارسی -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* اضافه کردن فونت به کل صفحه */
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-        }
-    </style>
 </head>
 <body>
     <div class="container">
-        <h1>شبیه‌ساز آموزشی اقتصاد توکن</h1>
+        <h1>شبیه ساز آموزشی اقتصاد توکن</h1>
         <p>این یک ابزار آموزشی است. هیچ پول واقعی در کار نیست.</p>
         
-        <div class="counter">توکن‌های شما: <span id="tokens">0</span></div>
+        <div class="counter">توکن های شما: <span id="tokens">0</span></div>
         
         <div>
             <button class="upgrade" onclick="buyUpgrade(1, 10)">
-                خرید ماینر سطح ۱ (+۱ توکن/ثانیه)<br>
-                <small>هزینه: ۱۰ توکن</small>
+                خرید ماینر سطح 1 (+1 توکن/ثانیه)<br>
+                <small>هزینه: 10 توکن</small>
             </button>
             <button class="upgrade" onclick="buyUpgrade(5, 100)">
-                خرید ماینر سطح ۲ (+۵ توکن/ثانیه)<br>
-                <small>هزینه: ۱۰۰ توکن</small>
+                خرید ماینر سطح 2 (+5 توکن/ثانیه)<br>
+                <small>هزینه: 100 توکن</small>
             </button>
             <button class="upgrade" onclick="buyUpgrade(10, 500)">
-                خرید کارخانه ماینینگ (+۱۰ توکن/ثانیه)<br>
-                <small>هزینه: ۵۰۰ توکن</small>
+                خرید کارخانه ماینینگ (+10 توکن/ثانیه)<br>
+                <small>هزینه: 500 توکن</small>
             </button>
             
             <br>
             <button class="upgrade" onclick="resetGame()" style="background: #e74c3c;">
-                ریست کردن بازی 🔄
+                ریست کردن بازی
             </button>
             <button class="upgrade" onclick="saveGame()" style="background: #27ae60;">
-                ذخیره دستی 💾
+                ذخیره دستی
             </button>
         </div>
     </div>

@@ -1,44 +1,26 @@
-<!DOCTYPE html>
-<html lang="fa" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <title>Token Simulator</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <div class="container">
-        <h1>Token Simulator</h1>
-        <p>Educational Purpose - No Real Money</p>
-        
-        <div class="counter">Tokens: <span id="tokens">0</span></div>
-        
-        <div class="buttons">
-            <button class="upgrade" onclick="buyUpgrade(1, 10)">
-                Upgrade 1 (+1 token/sec)<br>
-                <small>Cost: 10 tokens</small>
-            </button>
-            <button class="upgrade" onclick="buyUpgrade(5, 100)">
-                Upgrade 2 (+5 tokens/sec)<br>
-                <small>Cost: 100 tokens</small>
-            </button>
-            <button class="upgrade" onclick="buyUpgrade(10, 500)">
-                Factory (+10 tokens/sec)<br>
-                <small>Cost: 500 tokens</small>
-            </button>
-            
-            <div class="action-buttons">
-                <button class="action-btn reset" onclick="resetGame()">
-                    Reset Game
-                </button>
-                <button class="action-btn save" onclick="saveGame()">
-                    Save Game
-                </button>
-            </div>
-        </div><br>
-<button class="upgrade" onclick="showAchievements()" style="background: #9b59b6;">
-    نمایش دستاوردها 🏆
-</button>
+<div>
+    <button class="upgrade" onclick="buyUpgrade(1, 10)">
+        Upgrade 1 (+1 token/sec)<br>
+        <small>Cost: 10 tokens</small>
+    </button>
+    <button class="upgrade" onclick="buyUpgrade(5, 100)">
+        Upgrade 2 (+5 tokens/sec)<br>
+        <small>Cost: 100 tokens</small>
+    </button>
+    <button class="upgrade" onclick="buyUpgrade(10, 500)">
+        Factory (+10 tokens/sec)<br>
+        <small>Cost: 500 tokens</small>
+    </button>
+    
+    <div class="action-buttons">
+        <button class="action-btn achievements" onclick="showAchievements()">
+            Achievements 🏆
+        </button>
+        <button class="action-btn save" onclick="saveGame()">
+            Save Game
+        </button>
+        <button class="action-btn reset" onclick="resetGame()">
+            Reset Game
+        </button>
     </div>
-    <script src="script.js"></script>
-</body>
-</html>
+</div>
